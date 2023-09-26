@@ -1,0 +1,32 @@
+{
+  "name": "database",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "generate": "drizzle-kit generate:sqlite",
+    "push": "drizzle-kit push:sqlite",
+    "migrate": "ts-node --esm src/migrate.mts",
+    "studio": "drizzle-kit studio",
+    "seed": "src/seed.mts"
+  },
+  "dependencies": {
+    "@auth/core": "^0.15.2",
+    "@libsql/client": "0.3.4",
+    "drizzle-orm": "0.28.6",
+    "drizzle-zod": "0.5.1",
+    "zod": "3.21.4"
+  },
+  "devDependencies": {
+    "@types/node": "20.3.1",
+    "bufferutil": "4.0.7",
+    "dotenv": "^16.3.1",
+    "drizzle-kit": "0.19.12",
+    "encoding": "0.1.13",
+    "ts-node": "10.9.1",
+    "tsconfig": "workspace:*",
+    "typescript": "5.1.6",
+    "utf-8-validate": "6.0.3"
+  },
+  "author": ""
+}
