@@ -1,0 +1,135 @@
+.widgetContainer {
+  cursor: pointer;
+}
+
+.widget {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: fantasy;
+  text-align: center;
+  position: absolute;
+
+  &.active {
+    background-color: #ffcc00;
+  }
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 99999999;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  animation: fadein 0.1s ease-in-out;
+
+  &.hidden {
+    /* display: none; */
+    animation: fadeout .2s ease-in-out forwards;
+  }
+}
+
+.iframeContainer {
+  overflow: hidden !important;
+  position: fixed;
+  height: 100% !important;
+  width: 400px;
+  right: 0;
+
+  /* .loader {
+    margin: 0 auto;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #fff;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    z-index: 999999999;
+    margin: 0;
+    position: absolute;
+    top: calc(50% - 24px);
+    left: calc(50% - 24px);
+    transform: translateY(-50%);
+  } */
+
+  .iframe {
+    width: 400px;
+    position: absolute;
+    height: 100%;
+    border: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999999999;
+    background-color: #fff;
+
+    &.right {
+      right: 0;
+      width: 400px;
+      animation: slidein 0.25s ease-in-out;
+    }
+
+    &.hidden {
+      /* display: none; */
+      /* width: 200px; */
+      animation: slideout .25s forwards;
+    }
+  }
+}
+
+@keyframes slidein {
+  from {
+    right: -400px;
+  }
+
+  to {
+    right: 0;
+  }
+}
+
+@keyframes slideout {
+  from {
+    right: 0;
+  }
+
+  to {
+    right: -400px;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
