@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "presentation": {
+    "echo": false,
+    "reveal": "always",
+    "focus": false,
+    "panel": "dedicated",
+    "showReuseMessage": true
+  },
+  "tasks": [
+    {
+      "label": "Web(next.js)",
+      "type": "shell",
+      "command": "dotenv -- pnpm dev --filter={apps/web}",
+      "isBackground": false,
+      "problemMatcher": []
+    },
+    {
+      "label": "Preview widget",
+      "type": "shell",
+      "command": "dotenv -- pnpm run vite --filter={apps/widgets}",
+      "isBackground": false,
+      "problemMatcher": []
+    }
+  ]
+}

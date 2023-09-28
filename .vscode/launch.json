@@ -2,13 +2,24 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Next.js",
+      "name": "Web: Next.js",
       "type": "node-terminal",
-      "cwd": "${workspaceFolder}/apps/web",
       "request": "launch",
-      "command": "pnpm dev",
+      "command": "dotenv -- pnpm dev --filter={apps/web}",
       "serverReadyAction": {
-        "pattern": "url: https?://localhost:(.+)",
+        "pattern": "Local:.+ https?://localhost:(.+)",
+        "uriFormat": "http://localhost:%s",
+        "action": "debugWithChrome"
+      }
+    },
+    {
+      "name": "Widgets: Launch Chrome against localhost",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/apps/widgets",
+      "request": "launch",
+      "command": "pnpm vite",
+      "serverReadyAction": {
+        "pattern": "Local:.+ https?://localhost(.+)",
         "uriFormat": "http://localhost:%s",
         "action": "debugWithChrome"
       }

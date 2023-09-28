@@ -1,21 +1,9 @@
-/**
- * @type {import('next').NextConfig}
- */
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   experimental: {
-    serverActions: true,
+    serverComponentsExternalPackages: ["libsql"],
   },
-  images: {
-    domains: [
-      "public.blob.vercel-storage.com",
-      "res.cloudinary.com",
-      "abs.twimg.com",
-      "pbs.twimg.com",
-      "avatars.githubusercontent.com",
-      "www.google.com",
-      "flag.vercel.app",
-      "illustrations.popsy.co",
-    ],
-  },
-  reactStrictMode: false,
+  transpilePackages: ["@paperknife/database"],
 };
+
+module.exports = nextConfig
