@@ -8,10 +8,11 @@ dotenv.config({
 export default {
   schema: "./schema/index.ts",
   out: "./migrations",
-  dbCredentials: {
-    url: process.env.DATABASE_URL || "",
-    authToken: process.env.DATABASE_AUTH_TOKEN,
-  },
   driver: "turso",
+  dbCredentials: {
+    url: process.env.DATABASE_URL!,
+    authToken: process.env.DATABASE_AUTH_TOKEN,
+    syncUrl: process.env.DATABASE_SYNC_URL,
+  },
   strict: true,
 } satisfies Config;
