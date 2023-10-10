@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local", "**/.env"],
+  "globalDependencies": ["**/.env"],
   "globalEnv": [
     "DATABASE_URL",
     "DATABASE_AUTH_TOKEN"
@@ -16,11 +16,6 @@
       "dotEnv": [".env"]
     },
     "lint": {},
-    "web#dev": {
-      "cache": false,
-      "persistent": true,
-      "dotEnv": [".env"]
-    },
     "db:generate": {
       "cache": false
     },

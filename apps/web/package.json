@@ -1,5 +1,5 @@
 {
-  "name": "paperknife",
+  "name": "web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,30 +9,43 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@paperknife/admin-database": "workspace:*",
     "@paperknife/database": "workspace:*",
+    "@radix-ui/react-avatar": "^1.0.4",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-popover": "^1.0.7",
+    "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-tabs": "^1.0.4",
+    "bufferutil": "^4.0.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
-    "drizzle-orm": "^0.28.6",
+    "cmdk": "^0.2.0",
+    "encoding": "^0.1.13",
     "lucide-react": "^0.279.0",
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest",
+    "next": "^13.5.4",
+    "next-auth": "^4.23.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sonner": "^1.0.3",
+    "swr": "^2.2.4",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "utf-8-validate": "^6.0.3"
   },
   "devDependencies": {
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
+    "@next/eslint-plugin-next": "^13.5.4",
+    "@types/node": "^17.0.12",
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
     "autoprefixer": "latest",
-    "drizzle-kit": "^0.19.13",
-    "eslint": "latest",
     "eslint-config-custom": "workspace:*",
     "nodemailer": "^6.9.5",
     "postcss": "latest",
     "tailwindcss": "latest",
     "tsconfig": "workspace:*",
-    "typescript": "latest"
+    "typescript": "^4.5.3"
   }
 }

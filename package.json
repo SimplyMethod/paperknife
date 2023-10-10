@@ -1,5 +1,4 @@
 {
-  "name": "paperknife-monorepo",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -8,11 +7,15 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "tsconfig": "workspace:*",
     "dotenv-cli": "^7.3.0",
     "eslint": "^8.48.0",
     "prettier": "^3.0.3",
-    "tsconfig": "workspace:*",
-    "turbo": "latest"
+    "turbo": "latest",
+    "typescript": "^4.5.3"
   },
-  "packageManager": "pnpm@8.6.10"
+  "packageManager": "pnpm@8.6.10",
+  "prisma": {
+    "schema": "packages/database/schema.prisma"
+  }
 }
