@@ -5,7 +5,8 @@
   "main": "src/index.ts",
   "scripts": {
     "db:generate": "prisma generate",
-    "db:push": "prisma db push --skip-generate"
+    "db:push": "prisma db push --skip-generate",
+    "db:schema:dump": "prisma migrate diff --from-empty --to-schema-datamodel schema.prisma --script > baseline.sql"
   },
   "dependencies": {
     "@libsql/client": "^0.3.5",
