@@ -1,6 +1,13 @@
-import prisma from "./client";
-import prismaAdmin from "./clientAdmin";
+import { createClient } from "@libsql/client";
+import { drizzle } from "drizzle-orm/libsql";
+import * as schema from "./schema";
 
-export default prisma;
-export { prismaAdmin };
-export * from "./client";
+const client = createClient({
+  url: process.env.DATABASE_URL!,
+  authToken: process.env.DATABASE_AUTH_TOKEN!,
+});
+
+export const db = drizzle(client, { schema, logger: true});
+export { eq } from "drizzle-orm";
+export default db;
+
