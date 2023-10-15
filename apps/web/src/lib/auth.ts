@@ -119,15 +119,18 @@ function getAdapter() {
   return {
     // @ts-expect-error FIXME: when we have a better type for this
     ...DrizzleAdapter(db),
-    async getUserByAccount(providerAccountId) {
+    async getUserByAccount(providerAccount: {
+      provider: string;
+      providerAccountId: string;
+    }) {
       const results = await db
         .select()
         .from(accounts)
         .leftJoin(users, eq(users.id, accounts.userId))
         .where(
           and(
-            eq(accounts.provider, providerAccountId.provider),
-            eq(accounts.providerAccountId, providerAccountId.providerAccountId),
+            eq(accounts.provider, providerAccount.provider),
+            eq(accounts.providerAccountId, providerAccount.providerAccountId),
           ),
         )
         .get();
