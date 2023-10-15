@@ -105,6 +105,9 @@ importers:
       '@radix-ui/react-tabs':
         specifier: ^1.0.4
         version: 1.0.4(@types/react-dom@18.2.8)(@types/react@18.2.23)(react-dom@18.2.0)(react@18.2.0)
+      better-sqlite3:
+        specifier: ^9.0.0
+        version: 9.0.0
       bufferutil:
         specifier: ^4.0.7
         version: 4.0.7
@@ -117,9 +120,6 @@ importers:
       cmdk:
         specifier: ^0.2.0
         version: 0.2.0(@types/react@18.2.23)(react-dom@18.2.0)(react@18.2.0)
-      drizzle-orm:
-        specifier: ^0.28.6
-        version: 0.28.6(@libsql/client@0.3.5)(better-sqlite3@9.0.0)
       encoding:
         specifier: ^0.1.13
         version: 0.1.13
@@ -178,6 +178,9 @@ importers:
       '@next/eslint-plugin-next':
         specifier: ^13.5.4
         version: 13.5.4
+      '@types/better-sqlite3':
+        specifier: ^7.6.5
+        version: 7.6.5
       '@types/node':
         specifier: ^17.0.12
         version: 17.0.45
@@ -3099,6 +3102,12 @@ packages:
       '@types/estree': 1.0.2
     dev: false
 
+  /@types/better-sqlite3@7.6.5:
+    resolution: {integrity: sha512-H3ZUx89KiPhYa9nalUXVVStSUFHuzYxt4yoazufpTTYW9rVUCzhh02V8CH2C8nE4libnK0UgFq5DFIe0DOhqow==}
+    dependencies:
+      '@types/node': 20.8.6
+    dev: true
+
   /@types/debug@4.1.9:
     resolution: {integrity: sha512-8Hz50m2eoS56ldRlepxSBa6PWEVCtzUo/92HgLc2qTMnotJNIm7xP+UZhyWoYsyOdd5dxZ+NZLb24rsKyFs2ow==}
     dependencies:
@@ -3119,7 +3128,7 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 20.7.0
+      '@types/node': 20.8.6
     dev: true
 
   /@types/hast@2.3.6:
@@ -3184,10 +3193,6 @@ packages:
     resolution: {integrity: sha512-5j/lXt7unfPOUlrKC34HIaedONleyLtwkKggiD/0uuMfT8gg2EOpg0dz4lCD15Ga7muC+1WzJZAjIB9simWd6Q==}
     dev: true
 
-  /@types/node@20.7.0:
-    resolution: {integrity: sha512-zI22/pJW2wUZOVyguFaUL1HABdmSVxpXrzIqkjsHmyUjNhPoWM1CKfvVuXfetHhIok4RY573cqS0mZ1SJEnoTg==}
-    dev: true
-
   /@types/node@20.8.6:
     resolution: {integrity: sha512-eWO4K2Ji70QzKUqRy6oyJWUeB7+g2cRagT3T/nxYibYcT4y2BDL8lqolRXjTHmkZCdJfIPaY73KbJAZmcryxTQ==}
     dependencies:
@@ -3248,7 +3253,7 @@ packages:
   /@types/through@0.0.30:
     resolution: {integrity: sha512-FvnCJljyxhPM3gkRgWmxmDZyAQSiBQQWLI0A0VFL0K7W1oRUrPJSqNO0NvTnLkBcotdlp3lKvaT0JrnyRDkzOg==}
     dependencies:
-      '@types/node': 20.7.0
+      '@types/node': 20.8.6
     dev: true
 
   /@types/unist@2.0.8:
@@ -3375,7 +3380,7 @@ packages:
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.5.0
+      semver: 7.5.4
       tsutils: 3.21.0(typescript@4.9.5)
       typescript: 4.9.5
     transitivePeerDependencies:

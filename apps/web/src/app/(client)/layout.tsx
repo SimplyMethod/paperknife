@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -34,8 +34,7 @@ export default async function SiteLayout({
   // }
 
   return (
-    <>
-      <div className="py-8 bg-gray-50">
+    <div className="py-8 bg-gray-50">
         <div className="pb-5" id="header">
           <div className="px-8">
             <h3 className="text-base font-semibold leading-6 text-gray-900 just">What's new?</h3>
@@ -48,15 +47,15 @@ export default async function SiteLayout({
               <nav className="flex space-x-8 md:mx-auto">
                 {tabs.map((tab) => (
                   <a
-                    key={tab.name}
-                    href={tab.href}
+                    aria-current={tab.current ? 'page' : undefined}
                     className={classNames(
                       tab.current
                         ? 'border-slate-500 text-slate-800'
                         : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
                       'whitespace-nowrap border-b-2 px-1 pb-2 text-sm'
                     )}
-                    aria-current={tab.current ? 'page' : undefined}
+                    href={tab.href}
+                    key={tab.name}
                   >
                     {tab.name}
                   </a>
@@ -70,7 +69,6 @@ export default async function SiteLayout({
           {children}
         </div>
       </div>
-    </>
   );
 }
 

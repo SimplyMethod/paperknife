@@ -3,7 +3,11 @@
   "globalDependencies": ["**/.env"],
   "globalEnv": [
     "DATABASE_URL",
-    "DATABASE_AUTH_TOKEN"
+    "DATABASE_AUTH_TOKEN",
+    "NODE_ENV",
+    "GITHUB_CLIENT_ID",
+    "GITHUB_CLIENT_SECRET",
+    "ADMIN_EMAIL"
   ],
   "pipeline": {
     "build": {

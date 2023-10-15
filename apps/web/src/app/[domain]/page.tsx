@@ -1,34 +1,21 @@
-import { db } from '@paperknife/database';
+import Link from "next/link";
+import { getPosts } from "@/lib/api/post";
 
 export default async function Page() {
 
-  const posts = await db.query.posts.findMany({
-    with: {
-      postTags: {
-        with: {
-          tag: true
-        }
-      }
-    },
-  });
+  const posts = await getPosts();
 
   return (
     <>
       {
-        posts.map((post, idx) => {
+        posts.map(({ id, title, slug, content }) => {
           return (
-            <div key={idx}>
-              <h1>{post.title}</h1>
-              <p>{post.body}</p>
-              <p>
-                {
-                post.postTags.map((postTag, idx) => {
-                  return (
-                    <span key={idx} className="inline-flex items-center rounded-md bg-red-100 mx-1 px-2 py-1 text-xs font-medium text-gray-600">{postTag.tag.name}</span>
-                  )
-                })
-                }
-              </p>
+            <div key={id}>
+              <h1>{title}</h1>
+              <p>{content}</p>
+              <Link href={`/posts/${slug}`}>
+                Read more
+              </Link>
             </div>
           )
         })

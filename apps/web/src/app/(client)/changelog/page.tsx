@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import { headers } from 'next/headers'
+import { cn } from "@/lib/utils";
 
 const posts = [
   {
@@ -48,7 +48,7 @@ const posts = [
   },
 ]
 
-// translate posts to a different locale: zh-tw 
+// translate posts to a different locale: zh-tw
 const postsZhTw = [
   {
     title: '讓你的使用者不再錯過任何更新',
@@ -96,12 +96,11 @@ const postsZhTw = [
   },
 ]
 
-function getLocales(str, defaultLocale) {
+function getLocales(str: string, defaultLocale: string): string[] {
   return (
     str
-      ?.split(",")
-      .map((type) => type.split(";")[0].trim().replace("*", defaultLocale)) ??
-    ""
+      .split(",")
+      .map((type) => type.split(";")[0].trim().replace("*", defaultLocale))
   );
 }
 
@@ -112,30 +111,26 @@ export default function Page() {
   const contentWithPreferredLanguage = preferredLanguage[0] === 'zh-tw' ? postsZhTw : posts;
 
   return (
-    <>
-      <div className="px-0 pb-20 lg:px-8 lg:pb-28">
+    <div className="px-0 pb-20 lg:px-8 lg:pb-28">
         <div className="mx-auto max-w-xl">
           <div className="mx-auto grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-1">
             {contentWithPreferredLanguage.map((post) => (
-              <div key={post.title} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
+              <div className="flex flex-col overflow-hidden rounded-lg shadow-lg" key={post.title}>
                 <div className="flex flex-1 flex-col justify-between bg-white p-6">
                   <div className="flex-1">
                     <a href={post.category.href}>
                       <span className={
                         cn(
                           'inline-block px-3 py-1 text-xs font-semibold rounded-full',
-                          post.category.name === 'Announcement'
-                            ? 'bg-green-100 text-green-800'
-                            : post.category.name === 'New'
-                              ? 'bg-purple-100 text-purple-800'
-                              : 'bg-blue-100 text-blue-800'
-
+                          post.category.name === 'Announcement' && 'bg-green-100 text-green-800',
+                          post.category.name === 'New' && 'bg-purple-100 text-purple-800',
+                          post.category.name !== 'Announcement' && post.category.name !== 'New' && 'bg-blue-100 text-blue-800'
                         )
                       }>
                         {post.category.name}
                       </span>
                     </a>
-                    <a href={post.href} className="mt-2 block">
+                    <a className="mt-2 block" href={post.href}>
                       <p className="text-xl font-semibold text-gray-900">{post.title}</p>
                       <p className="mt-3 text-base text-gray-500">{post.description}</p>
                     </a>
@@ -152,7 +147,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-    </>
   );
 
 }

@@ -7,7 +7,8 @@ const client = createClient({
   authToken: process.env.DATABASE_AUTH_TOKEN!,
 });
 
-export const db = drizzle(client, { schema, logger: true});
-export { eq } from "drizzle-orm";
+export const db = drizzle(client, { schema });
+
+export { eq, and } from "drizzle-orm";
 export default db;
 
