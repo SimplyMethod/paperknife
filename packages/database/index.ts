@@ -9,6 +9,6 @@ const client = createClient({
 
 export const db = drizzle(client, { schema });
 
-export { eq, and } from "drizzle-orm";
+export { eq, and, sql } from "drizzle-orm";
 export default db;
 
