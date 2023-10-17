@@ -7,11 +7,13 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "tsconfig": "workspace:*",
     "dotenv-cli": "^7.3.0",
     "eslint": "^8.48.0",
     "prettier": "^3.0.3",
+    "prettier-plugin-organize-imports": "^3.2.3",
+    "prettier-plugin-tailwindcss": "^0.5.3",
     "turbo": "^1.10.15",
+    "tsconfig": "workspace:*",
     "typescript": "^5.1.6"
   },
   "packageManager": "pnpm@8.6.10",
