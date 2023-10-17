@@ -106,7 +106,7 @@ function getLocales(str: string, defaultLocale: string): string[] {
 
 export default function Page() {
   const headersList = headers();
-  const acceptLanguage = headersList.get('accept-language')
+  const acceptLanguage = headersList.get('accept-language') ?? '';
   const preferredLanguage = getLocales(acceptLanguage, 'en-us');
   const contentWithPreferredLanguage = preferredLanguage[0] === 'zh-tw' ? postsZhTw : posts;
 

@@ -44,7 +44,6 @@ import type {
   AdmonitionKind,
 } from "@mdxeditor/editor";
 import type { DirectiveNode } from "@mdxeditor/editor/dist/plugins/directives/DirectiveNode";
-import type { FC } from "react";
 import "@mdxeditor/editor/style.css";
 
 function whenInAdmonition(editorInFocus: EditorInFocus | null) {
@@ -124,7 +123,7 @@ export const KitchenSinkToolbar: React.FC = () => {
   );
 };
 
-export const ALL_PLUGINS = [
+const ALL_PLUGINS = [
   listsPlugin(),
   quotePlugin(),
   headingsPlugin({ allowedHeadingLevels: [1, 2, 3] }),
@@ -145,9 +144,17 @@ export const ALL_PLUGINS = [
     },
   }),
   directivesPlugin({ directiveDescriptors: [AdmonitionDirectiveDescriptor] }),
-  // TODO: add raw markdown diff
   markdownShortcutPlugin(),
 ];
+
+const exportPlugins = (rawMarkdown) => {
+return  [
+  directivesPlugin({ directiveDescriptors: [AdmonitionDirectiveDescriptor] }),
+  markdownShortcutPlugin(),
+  diffSourcePlugin({ viewMode: "rich-text", diffMarkdown: rawMarkdown }),
+];
+
+}
 
 export interface EditorProps {
   markdown: string;
@@ -156,7 +163,7 @@ export interface EditorProps {
   onChange?: (markdown: string) => void;
 }
 
-const Editor: FC<EditorProps> = ({
+export const Editor: React.FC<EditorProps> = ({
   markdown,
   rawMarkdown = "",
   editorRef,
@@ -168,11 +175,10 @@ const Editor: FC<EditorProps> = ({
     plugins = [
       ...ALL_PLUGINS,
       toolbarPlugin({ toolbarContents: () => <KitchenSinkToolbar /> }),
-      diffSourcePlugin({ viewMode: "rich-text", diffMarkdown: rawMarkdown }),
     ];
   } else {
     plugins = [
-      ...ALL_PLUGINS,
+      ...exportPlugins(rawMarkdown),
       toolbarPlugin({ toolbarContents: () => <BasicToolbar /> }),
     ];
   }

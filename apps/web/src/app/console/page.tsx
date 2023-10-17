@@ -1,7 +1,6 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { getServerSession } from "next-auth";
 
 export default function Page() {
   const { data: session, status } = useSession();
