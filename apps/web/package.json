@@ -11,7 +11,7 @@
   "dependencies": {
     "@auth/drizzle-adapter": "^0.3.3",
     "@hookform/resolvers": "^3.3.2",
-    "@mdxeditor/editor": "^1.3.0",
+    "@mdxeditor/editor": "^1.4.0",
     "@paperknife/database": "workspace:*",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
