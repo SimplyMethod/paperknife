@@ -254,6 +254,9 @@ importers:
       '@auth/core':
         specifier: ^0.16.1
         version: 0.16.1(nodemailer@6.9.5)
+      '@faker-js/faker':
+        specifier: ^8.1.0
+        version: 8.1.0
       '@types/node':
         specifier: ^20.8.6
         version: 20.8.6
@@ -263,6 +266,9 @@ importers:
       drizzle-kit:
         specifier: ^0.19.13
         version: 0.19.13
+      tsx:
+        specifier: ^3.14.0
+        version: 3.14.0
 
   packages/eslint-config-custom:
     devDependencies:
@@ -5016,7 +5022,7 @@ packages:
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.5.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0)(eslint@8.51.0)
       eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.51.0)
       fast-glob: 3.3.1
-      get-tsconfig: 4.5.0
+      get-tsconfig: 4.7.2
       is-core-module: 2.12.0
       is-glob: 4.0.3
     transitivePeerDependencies:
@@ -5705,10 +5711,6 @@ packages:
     dependencies:
       call-bind: 1.0.2
       get-intrinsic: 1.2.1
-    dev: true
-
-  /get-tsconfig@4.5.0:
-    resolution: {integrity: sha512-MjhiaIWCJ1sAU4pIQ5i5OfOuHHxVo1oYeNsWTON7jxYkod8pHocXeh+SSbmu5OZZZK73B6cbJ2XADzXehLyovQ==}
     dev: true
 
   /get-tsconfig@4.7.2:
@@ -9789,6 +9791,17 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 4.9.5
+    dev: true
+
+  /tsx@3.14.0:
+    resolution: {integrity: sha512-xHtFaKtHxM9LOklMmJdI3BEnQq/D5F73Of2E1GDrITi9sgoVkvIsrQUTY1G8FlmGtA+awCI4EBlTRRYxkL2sRg==}
+    hasBin: true
+    dependencies:
+      esbuild: 0.18.20
+      get-tsconfig: 4.7.2
+      source-map-support: 0.5.21
+    optionalDependencies:
+      fsevents: 2.3.3
     dev: true
 
   /tunnel-agent@0.6.0:

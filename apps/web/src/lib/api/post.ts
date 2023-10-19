@@ -15,7 +15,7 @@ export async function getPostsCount(): Promise<number> {
     count: sql<number>`count(*)`
   }).from(postsTable);
 
-  return result[0].count as number;
+  return result[0].count ;
 }
 
 export async function getPost(slug: string) {
@@ -24,4 +24,19 @@ export async function getPost(slug: string) {
   }) as Post;
 
   return post;
+}
+
+export async function addPost(post: Post) {
+  const result = await db.insert(postsTable).values(post).returning();
+
+  return result;
+}
+
+export async function updatePost(post: Post) {
+  const result = await db.update(postsTable)
+    .set(post)
+    .where(eq(postsTable.id, post.id))
+    .returning();
+
+  return result;
 }

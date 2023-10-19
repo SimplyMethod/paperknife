@@ -1,8 +1,9 @@
 export interface Post {
   id: string;
   title: string;
+  slug: string;
   content: string;
-  createdAt: Date;
+  createdAt?: Date;
   updatedAt?: Date | null;
   published: boolean;
 }
