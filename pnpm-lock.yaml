@@ -260,9 +260,6 @@ importers:
       '@types/node':
         specifier: ^20.8.6
         version: 20.8.6
-      dotenv:
-        specifier: ^16.3.1
-        version: 16.3.1
       drizzle-kit:
         specifier: ^0.19.13
         version: 0.19.13
