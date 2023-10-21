@@ -4,7 +4,7 @@ import {
   sqliteTable,
   text,
   primaryKey,
-  uniqueIndex,
+  unique,
 } from "drizzle-orm/sqlite-core";
 import { relations } from "drizzle-orm";
 import { createId } from "@paralleldrive/cuid2";
@@ -23,12 +23,15 @@ export const posts = sqliteTable(
     createdAt: integer("created_at", { mode: "timestamp" }).default(
       sql`(strftime('%s', 'now'))`,
     ),
+    publishedAt: integer("published_at", { mode: "timestamp" }).default(
+      sql`(strftime('%s', 'now'))`,
+    ),
     updateAt: integer("updated_at", { mode: "timestamp" }).default(
       sql`(strftime('%s', 'now'))`,
     ),
   },
   (posts) => ({
-    uniqueIdx: uniqueIndex("unique_idx").on(posts.slug),
+    unq: unique().on(posts.slug),
   }),
 );
 
