@@ -6,6 +6,7 @@ export interface Post {
   createdAt?: Date;
   updatedAt?: Date | null;
   published: boolean;
+  publishedAt?: Date;
 }
 
 export interface Tag {
@@ -13,4 +14,11 @@ export interface Tag {
   name: string;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface Setting {
+  id: string;
+  key: string | null;
+  value: string | null;
+  updatedAt: Date | null;
 }

@@ -12,16 +12,25 @@ const client = createClient({
 
 const db = drizzle(client);
 
+async function cleanup() {
+  await db.delete(postsTable);
+  process.exit(0);
+}
+
 async function seed() {
+
   const posts: Post[] = [];
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 30; i++) {
+    const published = faker.datatype.boolean(0.75);
+
     const post: Post = {
       id: createId(),
       title: faker.lorem.sentence(),
       slug: faker.lorem.slug(),
       content: faker.lorem.paragraphs(),
-      published: true,
+      published,
+      publishedAt: published ? faker.date.past() : undefined,
     };
 
     posts.push(post);
@@ -38,4 +47,5 @@ async function seed() {
   process.exit(0);
 }
 
+cleanup();
 seed();
