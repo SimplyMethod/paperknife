@@ -123,9 +123,6 @@ importers:
       '@tiptap/starter-kit':
         specifier: ^2.1.12
         version: 2.1.12(@tiptap/pm@2.1.12)
-      better-sqlite3:
-        specifier: ^9.0.0
-        version: 9.0.0
       bufferutil:
         specifier: ^4.0.7
         version: 4.0.7
@@ -148,7 +145,7 @@ importers:
         specifier: ^0.279.0
         version: 0.279.0(react@18.2.0)
       next:
-        specifier: ^13.5.6
+        specifier: ^13.5.5
         version: 13.5.6(react-dom@18.2.0)(react@18.2.0)(sass@1.69.4)
       next-auth:
         specifier: ^4.23.2
@@ -174,6 +171,9 @@ importers:
       sass:
         specifier: ^1.69.4
         version: 1.69.4
+      slugify:
+        specifier: ^1.6.6
+        version: 1.6.6
       sonner:
         specifier: ^1.0.3
         version: 1.0.3(react-dom@18.2.0)(react@18.2.0)
@@ -243,7 +243,7 @@ importers:
     dependencies:
       '@libsql/client':
         specifier: ^0.3.5
-        version: 0.3.5
+        version: 0.3.6
       '@paralleldrive/cuid2':
         specifier: ^2.2.2
         version: 2.2.2
@@ -252,7 +252,7 @@ importers:
         version: 9.0.0
       drizzle-orm:
         specifier: ^0.28.6
-        version: 0.28.6(@libsql/client@0.3.5)(better-sqlite3@9.0.0)
+        version: 0.28.6(@libsql/client@0.3.6)(better-sqlite3@9.0.0)
       drizzle-typebox:
         specifier: ^0.1.1
         version: 0.1.1(@sinclair/typebox@0.31.18)(drizzle-orm@0.28.6)
@@ -295,13 +295,7 @@ importers:
     dependencies:
       '@libsql/client':
         specifier: ^0.3.5
-        version: 0.3.5
-      '@prisma/adapter-libsql':
-        specifier: ^5.4.2
-        version: 5.4.2(@libsql/client@0.3.5)
-      '@prisma/client':
-        specifier: ^5.4.2
-        version: 5.4.2(prisma@5.4.2)
+        version: 0.3.6
     devDependencies:
       '@faker-js/faker':
         specifier: ^8.1.0
@@ -309,9 +303,6 @@ importers:
       dotenv:
         specifier: ^16.3.1
         version: 16.3.1
-      prisma:
-        specifier: ^5.4.2
-        version: 5.4.2
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -1004,28 +995,28 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@libsql/client@0.3.5:
-    resolution: {integrity: sha512-4fZxGh0qKW5dtp1yuQLRvRAtbt02V4jzjM9sHSmz5k25xZTLg7/GlNudKdqKZrjJXEV5PvDNsczupBtedZZovw==}
+  /@libsql/client@0.3.6:
+    resolution: {integrity: sha512-3Mc4ZDI7X5ZLkMxX5XijiBeqhvyrny356lcj/KVVIeMXt9j6g4l+CRIsUvgcsyCAOUHqWqh0+TjI91bCKmdW+w==}
     dependencies:
       '@libsql/hrana-client': 0.5.5
       js-base64: 3.7.5
-      libsql: 0.1.23
+      libsql: 0.1.34
     transitivePeerDependencies:
       - bufferutil
       - encoding
       - utf-8-validate
     dev: false
 
-  /@libsql/darwin-arm64@0.1.23:
-    resolution: {integrity: sha512-+V9aoOrZ47iYbY5NrcS0F2bDOCH407QI0wxAtss0CLOcFxlz/T6Nw0ryLK31GabklJQAmOXIyqkumLfz5HT64w==}
+  /@libsql/darwin-arm64@0.1.34:
+    resolution: {integrity: sha512-Wv8jvkj/fUAO8DF3A4HaddCMldUUpKcg/WW1sY95FNsSHOxktyxqU80jAp/tCuZ85GQIJozvgSr51/ARIC0gsw==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: false
     optional: true
 
-  /@libsql/darwin-x64@0.1.23:
-    resolution: {integrity: sha512-toHo7s0HiMl4VCIfjhGXDe9bGWWo78eP8fxIbwU6RlaLO6MNV9fjHY/GjTWccWOwyxcT+q6X/kUc957HnoW3bg==}
+  /@libsql/darwin-x64@0.1.34:
+    resolution: {integrity: sha512-2NQXD9nUzC08hg7FdcZLq5uTEwGz1KbD7YvUzQb/psO1lO/E/p83wl1es1082+Pp0z5pSPDWQeRTuccD41L+3w==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
@@ -1064,24 +1055,40 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@libsql/linux-x64-gnu@0.1.23:
-    resolution: {integrity: sha512-U11LdjayakOj0lQCHDYkTgUfe4Q+7AjZZh8MzgEDF/9l0bmKNI3eFLWA3JD2Xm98yz65lUx95om0WKOKu5VW/w==}
+  /@libsql/linux-arm64-gnu@0.1.34:
+    resolution: {integrity: sha512-r3dY1FDYZ7eX5HX7HyAoYSqK5FPugj5NSB5Bt/nz+ygBWdXASgSKxkE/RqjJIM59vXwv300iJX9qhR5fXv8sTw==}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@libsql/linux-arm64-musl@0.1.34:
+    resolution: {integrity: sha512-9AE/eNb9eQRcNsLxqtpLJxVEoIMmItrdwqJDImPJtOp10rhp4U0x/9RGKerl9Mg3ObVj676pyhAR2KzyudrOfQ==}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@libsql/linux-x64-gnu@0.1.34:
+    resolution: {integrity: sha512-o8toY1Txstjt13fBhZbFe8sNAW6OaS6qVcp1Bd6bHkCLSBLZ6pjJmwzQN8rFv9QFBPAnaKP3lI4vaOXXw7huTA==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: false
     optional: true
 
-  /@libsql/linux-x64-musl@0.1.23:
-    resolution: {integrity: sha512-8UcCK2sPVzcafHsEmcU5IDp/NxjD6F6JFS5giijsMX5iGgxYQiiwTUMOmSxW0AWBeT4VY5U7G6rG5PC8JSFtfg==}
+  /@libsql/linux-x64-musl@0.1.34:
+    resolution: {integrity: sha512-EldEmcAxxNPSCjJ73oFxg81PDDIpDbPqK/QOrhmmGYLvYwrnQtVRUIbARf80JQvcy6bCxOO/Q9dh6wGhnyHyYA==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: false
     optional: true
 
-  /@libsql/win32-x64-msvc@0.1.23:
-    resolution: {integrity: sha512-HAugD66jTmRRRGNMLKRiaFeMOC3mgUsAiuO6NRdRz3nM6saf9e5QqN/Ppuu9yqHHcZfv7VhQ9UGlAvzVK64Itg==}
+  /@libsql/win32-x64-msvc@0.1.34:
+    resolution: {integrity: sha512-jnv0qfVMnrVv00r+wUOe6DHrHuao9y1w1lN543cV2J1JdQNJT/eSZzhyZFSlS3T2ZUvXfZfZ5GeL8U18IAID6w==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
@@ -1340,48 +1347,6 @@ packages:
   /@popperjs/core@2.11.8:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
     dev: false
-
-  /@prisma/adapter-libsql@5.4.2(@libsql/client@0.3.5):
-    resolution: {integrity: sha512-4GDsCzmAjIVflU3z7ziH8UC4SLhKN+R9izEUPDVF034r/a2pJF4DsOaxoJG8FoMkQbI5DNWavVHtp5+ZeguQ+A==}
-    peerDependencies:
-      '@libsql/client': ^0.3.5
-    dependencies:
-      '@libsql/client': 0.3.5
-      '@prisma/driver-adapter-utils': 5.4.2
-      async-mutex: 0.4.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@prisma/client@5.4.2(prisma@5.4.2):
-    resolution: {integrity: sha512-2xsPaz4EaMKj1WS9iW6MlPhmbqtBsXAOeVttSePp8vTFTtvzh2hZbDgswwBdSCgPzmmwF+tLB259QzggvCmJqA==}
-    engines: {node: '>=16.13'}
-    requiresBuild: true
-    peerDependencies:
-      prisma: '*'
-    peerDependenciesMeta:
-      prisma:
-        optional: true
-    dependencies:
-      '@prisma/engines-version': 5.4.1-2.ac9d7041ed77bcc8a8dbd2ab6616b39013829574
-      prisma: 5.4.2
-    dev: false
-
-  /@prisma/driver-adapter-utils@5.4.2:
-    resolution: {integrity: sha512-V+mtlBXBxQuiOufaSH98S3x2j9G1G0+tgnx3lAlfd6YEeceTCcFFhg85rESW9UIshHvULeGFJsG7+qScgGX0Ng==}
-    dependencies:
-      debug: 4.3.4
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@prisma/engines-version@5.4.1-2.ac9d7041ed77bcc8a8dbd2ab6616b39013829574:
-    resolution: {integrity: sha512-wvupDL4AA1vf4TQNANg7kR7y98ITqPsk6aacfBxZKtrJKRIsWjURHkZCGcQliHdqCiW/hGreO6d6ZuSv9MhdAA==}
-    dev: false
-
-  /@prisma/engines@5.4.2:
-    resolution: {integrity: sha512-fqeucJ3LH0e1eyFdT0zRx+oETLancu5+n4lhiYECyEz6H2RDskPJHJYHkVc0LhkU4Uv7fuEnppKU3nVKNzMh8g==}
-    requiresBuild: true
 
   /@radix-ui/number@1.0.1:
     resolution: {integrity: sha512-T5gIdVO2mmPW3NNhjNgEP3cqMXjXL9UbO0BzWcXfvdBs+BohbQxvd/K5hSVKmn9/lbTdsQVKbUcP5WLCwvUbBg==}
@@ -3227,12 +3192,6 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /async-mutex@0.4.0:
-    resolution: {integrity: sha512-eJFZ1YhRR8UN8eBLoNzcDPcy/jqjsg6I1AP+KvWQX80BqOSW1oJPJXDylPUEeMr2ZQvHgnQ//Lp6f3RQ1zI7HA==}
-    dependencies:
-      tslib: 2.6.2
-    dev: false
-
   /asynciterator.prototype@1.0.0:
     resolution: {integrity: sha512-wwHYEIS0Q80f5mosx3L/dfG5t5rjEa9Ft51GTaNt862EnpyGHpgz2RkZvLPp1oF5TnAiTohkEKVEu8pQPJI7Vg==}
     dependencies:
@@ -3986,7 +3945,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.28.6(@libsql/client@0.3.5)(better-sqlite3@9.0.0):
+  /drizzle-orm@0.28.6(@libsql/client@0.3.6)(better-sqlite3@9.0.0):
     resolution: {integrity: sha512-yBe+F9htrlYER7uXgDJUQsTHFoIrI5yMm5A0bg0GiZ/kY5jNXTWoEy4KQtg35cE27sw1VbgzoMWHAgCckUUUww==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -4048,7 +4007,7 @@ packages:
       sqlite3:
         optional: true
     dependencies:
-      '@libsql/client': 0.3.5
+      '@libsql/client': 0.3.6
       better-sqlite3: 9.0.0
     dev: false
 
@@ -4059,7 +4018,7 @@ packages:
       drizzle-orm: '>=0.23.13'
     dependencies:
       '@sinclair/typebox': 0.31.18
-      drizzle-orm: 0.28.6(@libsql/client@0.3.5)(better-sqlite3@9.0.0)
+      drizzle-orm: 0.28.6(@libsql/client@0.3.6)(better-sqlite3@9.0.0)
     dev: false
 
   /drizzle-zod@0.5.1(drizzle-orm@0.28.6)(zod@3.22.4):
@@ -4068,7 +4027,7 @@ packages:
       drizzle-orm: '>=0.23.13'
       zod: '*'
     dependencies:
-      drizzle-orm: 0.28.6(@libsql/client@0.3.5)(better-sqlite3@9.0.0)
+      drizzle-orm: 0.28.6(@libsql/client@0.3.6)(better-sqlite3@9.0.0)
       zod: 3.22.4
     dev: false
 
@@ -5919,19 +5878,21 @@ packages:
       type-check: 0.4.0
     dev: true
 
-  /libsql@0.1.23:
-    resolution: {integrity: sha512-Nf/1B2Glxvcnba4jYFhXcaYmicyBA3RRm0LVwBkTl8UWCIDbX+Ad7c1ecrQwixPLPffWOVxKIqyCNTuUHUkVgA==}
+  /libsql@0.1.34:
+    resolution: {integrity: sha512-LGofp7z7gi1Td6vu2GxaA4WyvSPEkuFn0f/ePSti1TsAlBU0LWxdk+bj9D8nqswzxiqe5wpAyTLhVzTIYSyXEA==}
     cpu: [x64, arm64]
     os: [darwin, linux, win32]
     dependencies:
       '@neon-rs/load': 0.0.4
       detect-libc: 2.0.2
     optionalDependencies:
-      '@libsql/darwin-arm64': 0.1.23
-      '@libsql/darwin-x64': 0.1.23
-      '@libsql/linux-x64-gnu': 0.1.23
-      '@libsql/linux-x64-musl': 0.1.23
-      '@libsql/win32-x64-msvc': 0.1.23
+      '@libsql/darwin-arm64': 0.1.34
+      '@libsql/darwin-x64': 0.1.34
+      '@libsql/linux-arm64-gnu': 0.1.34
+      '@libsql/linux-arm64-musl': 0.1.34
+      '@libsql/linux-x64-gnu': 0.1.34
+      '@libsql/linux-x64-musl': 0.1.34
+      '@libsql/win32-x64-msvc': 0.1.34
     dev: false
 
   /lightningcss-darwin-arm64@1.22.0:
@@ -6781,8 +6742,8 @@ packages:
       lower-case: 1.1.4
     dev: true
 
-  /node-abi@3.50.0:
-    resolution: {integrity: sha512-2Gxu7Eq7vnBIRfYSmqPruEllMM14FjOQFJSoqdGWthVn+tmwEXzmdPpya6cvvwf0uZA3F5N1fMFr9mijZBplFA==}
+  /node-abi@3.51.0:
+    resolution: {integrity: sha512-SQkEP4hmNWjlniS5zdnfIXTk1x7Ome85RDzHlTbBtzE97Gfwz/Ipw4v/Ryk20DWIy3yCNVLVlGKApCnmvYoJbA==}
     engines: {node: '>=10'}
     dependencies:
       semver: 7.5.4
@@ -7315,7 +7276,7 @@ packages:
       minimist: 1.2.8
       mkdirp-classic: 0.5.3
       napi-build-utils: 1.0.2
-      node-abi: 3.50.0
+      node-abi: 3.51.0
       pump: 3.0.0
       rc: 1.2.8
       simple-get: 4.0.1
@@ -7421,14 +7382,6 @@ packages:
 
   /pretty-format@3.8.0:
     resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==}
-
-  /prisma@5.4.2:
-    resolution: {integrity: sha512-GDMZwZy7mysB2oXU+angQqJ90iaPFdD0rHaZNkn+dio5NRkGLmMqmXs31//tg/qXT3iB0cTQwnGGQNuirhSTZg==}
-    engines: {node: '>=16.13'}
-    hasBin: true
-    requiresBuild: true
-    dependencies:
-      '@prisma/engines': 5.4.2
 
   /prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
@@ -8096,6 +8049,11 @@ packages:
     resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
     engines: {node: '>=12'}
     dev: true
+
+  /slugify@1.6.6:
+    resolution: {integrity: sha512-h+z7HKHYXj6wJU+AnS/+IH8Uh9fdcX1Lrhg1/VMdf9PwoBQXFcXiAdsy2tSK0P6gKwJLXp02r90ahUCqHk9rrw==}
+    engines: {node: '>=8.0.0'}
+    dev: false
 
   /smart-buffer@4.2.0:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}

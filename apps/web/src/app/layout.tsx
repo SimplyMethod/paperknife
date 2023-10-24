@@ -5,7 +5,6 @@ import { ReactNode } from "react";
 import { notFound, redirect } from "next/navigation";
 import Script from "next/script";
 import { cn } from "@/lib/utils";
-import prisma from "@/lib/prisma";
 import CTA from "@/components/cta";
 import ReportAbuse from "@/components/report-abuse";
 import { getSiteData } from "@/lib/fetchers";
