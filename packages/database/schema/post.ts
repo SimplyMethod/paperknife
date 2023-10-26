@@ -16,19 +16,18 @@ export const posts = sqliteTable(
       .$defaultFn(() => createId())
       .notNull()
       .primaryKey(),
-    title: text("title"),
-    slug: text("slug"),
-    published: integer("published", { mode: "boolean" }).default(false),
-    content: text("content"),
-    createdAt: integer("created_at", { mode: "timestamp" }).default(
-      sql`(strftime('%s', 'now'))`,
-    ),
-    publishedAt: integer("published_at", { mode: "timestamp" }).default(
-      sql`(strftime('%s', 'now'))`,
-    ),
-    updateAt: integer("updated_at", { mode: "timestamp" }).default(
-      sql`(strftime('%s', 'now'))`,
-    ),
+    title: text("title").notNull(),
+    slug: text("slug").notNull(),
+    content: text("content").notNull(),
+    published: integer("published", { mode: "boolean" }).notNull().default(false),
+    createdAt: integer("created_at", { mode: "timestamp" })
+      .notNull()
+      .default(sql`(strftime('%s', 'now'))`),
+    publishedAt: integer("published_at", { mode: "timestamp" })
+      .default(sql`(strftime('%s', 'now'))`),
+    updatedAt: integer("updated_at", { mode: "timestamp" })
+      .notNull()
+      .default(sql`(strftime('%s', 'now'))`),
   },
   (posts) => ({
     unq: unique().on(posts.slug),
@@ -46,6 +45,7 @@ export const tags = sqliteTable("tags", {
     .primaryKey(),
   name: text("name"),
   slug: text("slug"),
+  pinned: integer("pinned", { mode: "boolean" }).default(false),
   createdAt: integer("created_at", { mode: "timestamp" }).default(
     sql`(strftime('%s', 'now'))`,
   ),

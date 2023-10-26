@@ -1,24 +1,29 @@
+import { createInsertSchema } from "drizzle-zod";
+import { posts as postsTable } from "./schema/post";
+export const insertPostSchema = createInsertSchema(postsTable);
 export interface Post {
-  id: string;
+  id?: string;
   title: string;
-  slug: string;
+  slug?: string;
   content: string;
   createdAt?: Date;
-  updatedAt?: Date | null;
-  published: boolean;
-  publishedAt?: Date;
+  updatedAt?: Date;
+  published?: boolean;
+  publishedAt?: Date | null;
 }
 
 export interface Tag {
-  id: string;
+  id?: string;
   name: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface Setting {
-  id: string;
-  key: string | null;
-  value: string | null;
-  updatedAt: Date | null;
+  id?: string;
+  key: string;
+  value: string;
+  updatedAt?: Date;
 }
+
+
