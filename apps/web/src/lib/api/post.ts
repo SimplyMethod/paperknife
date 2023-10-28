@@ -3,7 +3,12 @@ import { posts as postsTable } from "@paperknife/database/schema/post"
 import { insertPostSchema, type Post } from "@paperknife/database/types";
 import slugify from "slugify";
 
-export async function getPosts(includeDrafts = false): Promise<Post[]> {
+type GetPostsArgs = { includeDrafts?: boolean } | undefined;
+type GetPostArgs = { slug?: string; id?: string } | undefined;
+
+export async function getPosts(args?: GetPostsArgs): Promise<Post[]> {
+  const { includeDrafts } = args || {};
+
   const posts = await db
     .query
     .posts
@@ -18,7 +23,9 @@ export async function getPosts(includeDrafts = false): Promise<Post[]> {
   return posts;
 }
 
-export async function getPostsCount(includeDrafts = false): Promise<number> {
+export async function getPostsCount(args?: GetPostsArgs): Promise<number> {
+  const { includeDrafts } = args || {};
+
   const result = await db
   .select({
     count: sql<number>`count(*)`
@@ -29,28 +36,27 @@ export async function getPostsCount(includeDrafts = false): Promise<number> {
   return result[0].count;
 }
 
-export async function getPost(slug: string) {
-  const post = await db
-    .query
-    .posts
-    .findFirst({
-      where: eq(postsTable.slug, slug),
-    }) as Post;
+export async function getPost(args?: GetPostArgs): Promise<Post | null> {
+  let post: Post | null | undefined = null;
 
-  return post;
+  if (args?.slug) {
+    post = await db
+      .query
+      .posts
+      .findFirst({
+        where: eq(postsTable.slug, args.slug),
+      });
+  } else if (args?.id) {
+    post = await db
+      .query
+      .posts
+      .findFirst({
+        where: eq(postsTable.id, args.id),
+      });
+  }
+
+  return post ?? null;
 }
-
-export async function getPostById(id: string) {
-  const post = await db
-    .query
-    .posts
-    .findFirst({
-      where: eq(postsTable.id, id),
-    }) as Post;
-
-  return post;
-}
-
 export async function addPost(post: Post) {
   if (!post.slug) {
     const existingPost = await db.query.posts.findFirst({
