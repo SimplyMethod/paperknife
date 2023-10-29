@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1698178501265,
+      "tag": "0000_burly_martin_li",
+      "breakpoints": true
+    }
+  ]
+}
