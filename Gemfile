@@ -75,4 +75,9 @@ group :test do
 end
 
 gem "devise"
+gem "acts_as_tenant"
+gem 'friendly_id', '~> 5.5.0'
+gem "better_html"
+gem 'simple_form'
+
 gem "hotwire-livereload", "~> 1.3", :group => :development
