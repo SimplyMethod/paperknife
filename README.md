@@ -23,7 +23,7 @@ Paperknife is open source, which means you can host your own instance with your 
 To keep it simple, Paperknife is built with the following technologies:
 
 - [Next.js](https://nextjs.org/) - One of most popular React framework, which means it's easy to find correct answers when you have questions.
-- [Drizzle ORM] - A simple and lightweight ORM for Node.js, which means it's easy to use and maintain.
+- [Prisma]
 - [SQLite] - A simple and lightweight database, which means it's easy to use and maintain.
 - [Vercel] - A simple and lightweight hosting platform, which means it's easy to use and maintain.
 
@@ -43,3 +43,36 @@ Note: By default, paperknife is a single tenant application, which means you can
 ## Deploy your own instance
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FSimplyMethod%2Fpaperknife%2Ftree%2Fmain%2Fapps%2Fweb&env=DATABASE_URL,DATABASE_AUTH_TOKEN&project-name=paperknife&repository-name=paperknife)
+
+## About Cloudflare & Wrangler
+
+Local development:
+
+```shell
+npx @cloudflare/next-on-pages@1
+```
+
+How to add a new migration:
+
+```shell
+npx wrangler d1 migrations create paperknife-db create_organization_table
+```
+
+Then generate the migration:
+
+```shell
+npx prisma migrate diff --from-local-d1 --to-schema-datamodel ./prisma/schema.prisma --script > migrations/0002_create_organization_table.sql
+```
+
+Then apply the migration:
+
+```shell
+# For the local database
+npx wrangler d1 migrations apply paperknife-db --local
+```
+
+```shell
+# For the production database
+npx wrangler d1 migrations apply paperknife-db --remote
+```
+
