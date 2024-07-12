@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 import type { UserProps } from "./lib/types";
 
+export { auth as middleware } from "@/lib/auth";
+
 export const config = {
   matcher: [
     /*
@@ -12,6 +14,7 @@ export const config = {
      * 3. /_static (inside /public)
      * 4. all root files inside /public (e.g. /favicon.ico)
      */
+    //  "/((?!api|_next/static|_next/image|favicon.ico).*)",
     "/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)",
   ],
 };
@@ -71,3 +74,5 @@ export default async function middleware(req: NextRequest) {
 
   return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url));
 }
+
+export const runtime = "experimental-edge";
