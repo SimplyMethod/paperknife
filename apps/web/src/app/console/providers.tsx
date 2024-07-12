@@ -3,7 +3,6 @@
 import type { Dispatch, ReactNode, SetStateAction}  from "react";
 import { createContext } from "react";
 import { SessionProvider } from "next-auth/react";
-import { Toaster } from "sonner";
 // import { Analytics } from "@vercel/analytics/react";
 // import useCMDK from "#/ui/cmdk";
 
@@ -24,7 +23,6 @@ export default function Providers({ children }: { children: ReactNode }) {
         // }}
       > */}
         {/* <CMDK /> */}
-        <Toaster closeButton />
         {children}
         {/* <Analytics /> */}
       {/* </AppContext.Provider> */}

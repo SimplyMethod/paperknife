@@ -1,8 +1,8 @@
-import prisma from '@paperknife/database';
+// import { db } from '@paperknife/database';
 
 export default async function Page() {
 
-  const posts = await prisma.post.findMany();
+  // const posts = await db.query.posts.findMany();
 
   return (
     <div>
@@ -12,7 +12,7 @@ export default async function Page() {
         posts.map((post) => (
           <div key={post.id}>
             <h2>{post.title}</h2>
-            <p>{post.body}</p>
+            <p>{post.content}</p>
           </div>
         ))
       }

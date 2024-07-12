@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
@@ -37,9 +38,9 @@ export default async function SiteLayout({
     <div className="py-8 bg-gray-50">
         <div className="pb-5" id="header">
           <div className="px-8">
-            <h3 className="text-base font-semibold leading-6 text-gray-900 just">What's new?</h3>
+            <h3 className="text-base font-semibold leading-6 text-gray-900 just">What&rsquo;s new?</h3>
             <p className="mt-2 max-w-4xl text-sm text-gray-500">
-              We're currently working on the following features. If you have any suggestions, please let us know!
+              We&rsquo;re currently working on the following features. If you have any suggestions, please let us know!
             </p>
           </div>
           <div className="mt-4 w-full bg-gray-100 py-4 px-8 border-b border-t">
