@@ -1,11 +1,21 @@
+'use client';
+
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import type { EditorProps } from "@/components/editor-component";
-
-const EditorComp = dynamic<EditorProps>(
-  () => import("@/components/editor-component"),
-  { ssr: false },
-);
+import { useForm } from "react-hook-form";
+import type { insertPostSchema } from "@paperknife/database/types";
+// import Editor from "@/components/editor";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  // FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 
 function Loading() {
   return (
@@ -24,10 +34,124 @@ function Loading() {
 }
 
 export default function NewPostPage() {
+
+  // const form = useForm<z.infer<typeof insertPostSchema>>({
+  //   mode: "onChange",
+  //   defaultValues: {
+  //     title: "",
+  //     content: "",
+  //     slug: "",
+  //   },
+  //   // resolver: (...args) => {
+  //   //   // if (isDraft.current) {
+  //   //   //   // zodResolver(formSchema),
+  //   //   //   // TODO: different resolver for draft
+  //   //   //   return zodResolver(insertPostSchema)(...args);
+  //   //   // }
+  //   //   // return zodResolver(insertPostSchema)(...args);
+  //   // },
+  // });
+
+  // const { isSubmitting } = form.formState;
+
+  // const onSubmit = async (values: z.infer<typeof insertPostSchema>) => {
+
+    // API call
+
+  //   const result = await fetch("/api/posts", {
+  //     method: "POST",
+  //     body: JSON.stringify(values),
+  //   });
+
+  //   // TODO: add toast
+  //   if (!result.ok) {
+  //     // toast.error(result.error);
+  //   } else {
+  //     // toast.success("Product added successfully 😊");
+  //     form.reset();
+  //     // router.push("/dashboard/products");
+  //   }
+  // };
+
+  // const saveDraft = () => {
+  //   // const data = form.getValues();
+
+  //   try {
+  //     // await draftSchema.parseAsync(data);
+  //     // if passes, data is valid
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // const onChange = (richText: string) => {
+  //   form.setValue("content", richText);
+  // };
+
   return (
     <div className="container relative h-screen flex flex-col justify-between">
-      <Suspense fallback={<Loading />}>
-        <EditorComp markdown="" />
+      {/* <Suspense fallback={<Loading />}>
+        <Form {...form}>
+          <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
+            <FormField
+              control={form.control}
+              name="title"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Title</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Post title..." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="content"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Content</FormLabel>
+                  <FormControl>
+                    <Editor content={field.value} onChange={onChange} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+              <Button
+                onClick={() => {
+                  setShowNewPostDialog(false);
+                }}
+                type="button"
+                variant="ghost"
+              >
+                Cancel
+              </Button>
+              <Button
+                disabled={isSubmitting}
+                onClick={saveDraft}
+                type="button"
+                variant="ghost"
+              >
+                {isSubmitting ? (
+                  <div className="w-4 h-4 mx-2 rounded-full animate-spin border-2 border-solid border-gray-500 border-t-transparent" />
+                ) : (
+                  "Save as draft"
+                )}
+              </Button>
+              <Button disabled={isSubmitting} type="submit">
+                {isSubmitting ? (
+                  <div className="w-4 h-4 mx-2 rounded-full animate-spin border-2 border-solid border-gray-500 border-t-transparent" />
+                ) : (
+                  "Save"
+                )}
+              </Button>
+
+          </form>
+        </Form>
+
         <div className="sticky bottom-0 backdrop bg-white/50 backdrop-blur-sm">
           <div className="flex flex-shrink-0 justify-end px-4 py-4 border-t">
             <button
@@ -45,7 +169,7 @@ export default function NewPostPage() {
             </button>
           </div>
         </div>
-      </Suspense>
+      </Suspense> */}
     </div>
   );
 }

@@ -11,7 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-
+// import type { EditorProps } from "@/components/editor-component";
 
 function Loading() {
   return (
@@ -40,6 +40,10 @@ export default function Modal() {
     }
   };
 
+  // const EditorComp = dynamic<EditorProps>(
+  //   () => import("@/components/editor-component"),
+  //   { ssr: false },
+  // );
 
   return (
     <Dialog onOpenChange={onOpenChange} open={showNewPostDialog}>
